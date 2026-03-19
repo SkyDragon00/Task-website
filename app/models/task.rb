@@ -33,7 +33,7 @@ class Task < ApplicationRecord
     (due_date - Date.today).to_i
   end
 
-  # Print bonito en consola
+  # Print aesthehic en consola
   def console_print
     status = completed? ? "✅ COMPLETADA" : "❌ PENDIENTE"
     days = days_to_complete
