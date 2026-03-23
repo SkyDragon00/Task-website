@@ -1,0 +1,23 @@
+<div id="<%= dom_id(task) %>" class="task-card">
+  <div class="task-main">
+    <h3 class="task-title"><%= task.title %></h3>
+    <p class="task-meta">
+      <span class="task-date">Due: <%= task.due_date %></span>
+      <span class="task-status <%= task.completed? ? "is-done" : "is-open" %>">
+        <%= task.completed? ? "Completed" : "Pending" %>
+      </span>
+    </p>
+    <% if task.description.present? %>
+      <p class="task-description"><%= task.description %></p>
+    <% end %>
+  </div>
+  <div class="task-actions">
+    <%= link_to "Edit", edit_task_path(task), class: "secondary-button", data: { turbo_frame: "modal" } %>
+    <%= button_to task_path(task), method: :delete, class: "icon-button", form: { data: { turbo_confirm: "Delete this task?" } } do %>
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+        <path d="M7 6h10l-1 14H8L7 6zm3-3h4l1 2H9l1-2zM4 6h16v2H4V6z" />
+      </svg>
+      <span class="sr-only">Delete</span>
+    <% end %>
+  </div>
+</div>

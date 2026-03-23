@@ -1,0 +1,45 @@
+<div class="modal-card">
+  <div class="modal-header">
+    <h2 class="modal-title"><%= task.persisted? ? "Edit task" : "New task" %></h2>
+    <button type="button" class="icon-button" data-action="modal#close" aria-label="Close">
+      <span aria-hidden="true">X</span>
+    </button>
+  </div>
+
+  <%= form_with model: task, class: "task-form" do |form| %>
+    <% if task.errors.any? %>
+      <div class="form-errors">
+        <p>Please fix the following:</p>
+        <ul>
+          <% task.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-field">
+      <%= form.label :title %>
+      <%= form.text_field :title, required: true, maxlength: 100, placeholder: "Task title" %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :description %>
+      <%= form.text_area :description, rows: 3, placeholder: "Optional details" %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :due_date %>
+      <%= form.date_field :due_date, required: true %>
+    </div>
+
+    <div class="form-field checkbox-field">
+      <%= form.check_box :completed %>
+      <%= form.label :completed, "Mark as completed" %>
+    </div>
+
+    <div class="form-actions">
+      <%= form.submit task.persisted? ? "Save changes" : "Create task", class: "primary-button" %>
+    </div>
+  <% end %>
+</div>

@@ -8,3 +8,280 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+:root {
+	color-scheme: light;
+	--bg: #f5f2ea;
+	--card: #ffffff;
+	--ink: #1f1b16;
+	--muted: #6b635d;
+	--accent: #c06b2c;
+	--accent-dark: #8d4d1f;
+	--border: #e5ded6;
+	--shadow: 0 20px 50px rgba(31, 27, 22, 0.12);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: "Playfair Display", "Times New Roman", serif;
+	background: radial-gradient(circle at top, #fdf8f2 0%, #f5f2ea 45%, #efe6db 100%);
+	color: var(--ink);
+}
+
+.page {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 48px 24px 80px;
+}
+
+.page-header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 32px;
+}
+
+.page-title {
+	font-size: 40px;
+	margin: 0 0 6px;
+}
+
+.page-subtitle {
+	margin: 0;
+	color: var(--muted);
+	font-family: "Fira Sans", "Helvetica Neue", sans-serif;
+}
+
+.primary-button,
+.secondary-button,
+.icon-button {
+	border: none;
+	font-family: "Fira Sans", "Helvetica Neue", sans-serif;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.primary-button {
+	background: var(--accent);
+	color: #fff;
+	padding: 12px 22px;
+	border-radius: 999px;
+	text-decoration: none;
+	box-shadow: 0 10px 25px rgba(192, 107, 44, 0.25);
+}
+
+.primary-button:hover {
+	background: var(--accent-dark);
+}
+
+.secondary-button {
+	background: transparent;
+	color: var(--accent-dark);
+	border: 1px solid var(--accent-dark);
+	padding: 8px 16px;
+	border-radius: 999px;
+	text-decoration: none;
+}
+
+.icon-button {
+	background: transparent;
+	color: var(--muted);
+	padding: 8px;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.icon-button:hover {
+	color: var(--accent-dark);
+}
+
+.icon {
+	width: 18px;
+	height: 18px;
+	fill: currentColor;
+}
+
+.tasks-list {
+	display: grid;
+	gap: 16px;
+}
+
+.task-card {
+	display: flex;
+	justify-content: space-between;
+	gap: 24px;
+	padding: 20px 24px;
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 20px;
+	box-shadow: 0 12px 30px rgba(31, 27, 22, 0.08);
+	animation: card-fade-in 0.4s ease-out;
+}
+
+.task-title {
+	margin: 0 0 8px;
+	font-size: 22px;
+}
+
+.task-meta {
+	margin: 0;
+	color: var(--muted);
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	font-family: "Fira Sans", "Helvetica Neue", sans-serif;
+	font-size: 14px;
+}
+
+.task-status {
+	padding: 2px 10px;
+	border-radius: 999px;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.task-status.is-open {
+	background: #fff3e7;
+	color: #b4602f;
+}
+
+.task-status.is-done {
+	background: #e6f3eb;
+	color: #2f6b47;
+}
+
+.task-description {
+	margin: 12px 0 0;
+	color: var(--ink);
+	font-family: "Fira Sans", "Helvetica Neue", sans-serif;
+}
+
+.task-actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.modal::backdrop {
+	background: rgba(27, 24, 20, 0.45);
+}
+
+.modal {
+	border: none;
+	padding: 0;
+	background: transparent;
+	animation: modal-rise 0.35s ease-out;
+}
+
+.modal-card {
+	background: var(--card);
+	border-radius: 24px;
+	padding: 24px;
+	min-width: min(560px, 90vw);
+	box-shadow: var(--shadow);
+}
+
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.modal-title {
+	margin: 0;
+	font-size: 24px;
+}
+
+.task-form {
+	display: grid;
+	gap: 16px;
+	font-family: "Fira Sans", "Helvetica Neue", sans-serif;
+}
+
+.form-field {
+	display: grid;
+	gap: 6px;
+}
+
+.form-field input,
+.form-field textarea {
+	padding: 10px 12px;
+	border-radius: 12px;
+	border: 1px solid var(--border);
+	font-size: 14px;
+	font-family: inherit;
+}
+
+.checkbox-field {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.form-actions {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.form-errors {
+	background: #fce8e6;
+	border: 1px solid #f3b4aa;
+	color: #8f2f24;
+	padding: 12px 16px;
+	border-radius: 12px;
+}
+
+.sr-only {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+@media (max-width: 720px) {
+	.task-card {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.task-actions {
+		width: 100%;
+		justify-content: space-between;
+	}
+}
+
+@keyframes card-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes modal-rise {
+	from {
+		opacity: 0;
+		transform: translateY(16px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}

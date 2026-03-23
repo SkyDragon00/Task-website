@@ -1,0 +1,29 @@
+<main class="page">
+  <header class="page-header">
+    <div>
+      <h1 class="page-title">Tasks</h1>
+      <p class="page-subtitle">Create, update, and finish tasks without page refresh.</p>
+    </div>
+    <%= link_to "New task", new_task_path, class: "primary-button", data: { turbo_frame: "modal" } %>
+  </header>
+
+  <section class="tasks-section">
+    <div id="tasks_list" class="tasks-list">
+      <% if @tasks.any? %>
+        <% @tasks.each do |task| %>
+          <%= render "task", task: task %>
+        <% end %>
+      <% else %>
+        <div id="empty_state" class="task-card">
+          <p class="task-description">No tasks yet. Create the first one.</p>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <div data-controller="modal">
+    <dialog class="modal" data-modal-target="dialog" data-action="click->modal#closeOnBackdrop">
+      <turbo-frame id="modal" data-modal-target="frame"></turbo-frame>
+    </dialog>
+  </div>
+</main>
