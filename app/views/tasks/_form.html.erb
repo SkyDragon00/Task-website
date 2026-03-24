@@ -6,7 +6,7 @@
     </button>
   </div>
 
-  <%= form_with model: task, class: "task-form" do |form| %>
+  <%= form_with model: task, class: "task-form", data: { action: "turbo:submit-end->modal#closeOnSubmit" } do |form| %>
     <% if task.errors.any? %>
       <div class="form-errors">
         <p>Please fix the following:</p>

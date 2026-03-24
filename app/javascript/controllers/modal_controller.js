@@ -38,4 +38,10 @@ export default class extends Controller {
       this.close()
     }
   }
+
+  closeOnSubmit(event) {
+    if (event.detail.success) {
+      this.close()
+    }
+  }
 }
